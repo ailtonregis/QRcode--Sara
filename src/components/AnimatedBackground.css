@@ -1,0 +1,126 @@
+.animated-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 196, 18, 0.16), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(255, 214, 51, 0.10), transparent 32%),
+    linear-gradient(135deg, #050505 0%, #11100c 50%, #080806 100%);
+}
+
+.animated-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 3;
+}
+
+.glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0.35;
+  background: rgba(255, 196, 18, 0.45);
+  animation: floatingGlow 12s ease-in-out infinite;
+}
+
+.glow-one {
+  top: 8%;
+  left: -120px;
+}
+
+.glow-two {
+  top: 38%;
+  right: -140px;
+  animation-delay: -4s;
+}
+
+.glow-three {
+  bottom: -130px;
+  left: 28%;
+  animation-delay: -8s;
+}
+
+.diagonal {
+  position: absolute;
+  width: 160%;
+  height: 90px;
+  left: -30%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 196, 18, 0.10),
+    transparent
+  );
+  transform: rotate(-18deg);
+  animation: diagonalMove 10s ease-in-out infinite;
+}
+
+.diagonal-one {
+  top: 22%;
+}
+
+.diagonal-two {
+  bottom: 20%;
+  animation-delay: -5s;
+  opacity: 0.65;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 217, 64, 0.55) 1px,
+    transparent 1.5px
+  );
+  background-size: 72px 72px;
+  opacity: 0.13;
+  animation: particlesMove 18s linear infinite;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
+}
+
+@keyframes floatingGlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(55px, -35px, 0) scale(1.18);
+  }
+}
+
+@keyframes diagonalMove {
+  0%, 100% {
+    transform: translateX(-8%) rotate(-18deg);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateX(8%) rotate(-18deg);
+    opacity: 0.55;
+  }
+}
+
+@keyframes particlesMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 144px 144px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow,
+  .diagonal,
+  .particles {
+    animation: none;
+  }
+}
