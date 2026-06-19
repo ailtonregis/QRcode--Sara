@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Stärke Parts — E-commerce</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #D4A017;
+      --gold-light: #E8C44A;
+      --gold-dark: #B8860B;
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --bg-card-hover: rgba(255, 255, 255, 0.08);
+      --border-glass: rgba(255, 255, 255, 0.08);
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --text-muted: #707070;
+      --whatsapp: #25D366;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212, 160, 23, 0.06), transparent),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(212, 160, 23, 0.04), transparent),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255, 255, 255, 0.02), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* Glass Card */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 24px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-glass), transparent);
+    }
+
+    /* ========== HEADER ========== */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(212, 160, 23, 0.25);
+    }
+
+    .logo svg {
+      width: 48px;
+      height: 48px;
+      fill: #0a0a0a;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .header p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 320px;
+    }
+
+    /* ========== CONTACT CARD ========== */
+    .contact-card {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .contact-card .name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .contact-card .role {
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    .contact-details {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-details a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .contact-details a:hover,
+    .contact-details a:focus-visible {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+    }
+
+    .contact-details a svg {
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    .contact-details a:hover svg {
+      opacity: 1;
+    }
+
+    /* ========== BUTTONS ========== */
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      outline-offset: 3px;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover {
+      background: #20bd5a;
+      box-shadow: 0 6px 28px rgba(37, 211, 102, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-phone {
+      background: linear-gradient(135deg, #1a73e8, #0d47a1);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+    }
+    .btn-phone:hover {
+      box-shadow: 0 6px 28px rgba(26, 115, 232, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-email {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+    }
+    .btn-email:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .btn-ecommerce {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #0a0a0a;
+      box-shadow: 0 4px 20px rgba(212, 160, 23, 0.3);
+    }
+    .btn-ecommerce:hover {
+      box-shadow: 0 6px 28px rgba(212, 160, 23, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-contact {
+      background: var(--bg-card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-glass);
+      color: var(--gold);
+    }
+    .btn-contact:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(212, 160, 23, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      margin-bottom: 24px;
+    }
+
+    .about h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .about p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      margin-bottom: 24px;
+    }
+
+    .services h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .service-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .service-tag:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: rgba(212, 160, 23, 0.2);
+    }
+
+    .service-tag .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ========== BRANDS ========== */
+    .brands {
+      margin-bottom: 24px;
+    }
+
+    .brands h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .brands-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .brand-badge:hover {
+      background: var(--bg-card-hover);
+      color: var(--gold-light);
+      border-color: rgba(212, 160, 23, 0.25);
+      box-shadow: 0 0 20px rgba(212, 160, 23, 0.06);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      text-align: center;
+      padding: 24px 0 0;
+    }
+
+    .footer .tagline {
+      font-size: 1rem;
+      font-weight: 600;
+      background: linear-gradient(to right, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+
+    .footer .subtagline {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .footer .copyright {
+      margin-top: 20px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container>* {
+      animation: fadeUp 0.6s ease both;
+    }
+    .container>*:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .container>*:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+    .container>*:nth-child(3) {
+      animation-delay: 0.16s;
+    }
+    .container>*:nth-child(4) {
+      animation-delay: 0.24s;
+    }
+    .container>*:nth-child(5) {
+      animation-delay: 0.32s;
+    }
+    .container>*:nth-child(6) {
+      animation-delay: 0.40s;
+    }
+    .container>*:nth-child(7) {
+      animation-delay: 0.48s;
+    }
+    .container>*:nth-child(8) {
+      animation-delay: 0.56s;
+    }
+    .container>*:nth-child(9) {
+      animation-delay: 0.64s;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (min-width: 640px) {
+      .container {
+        padding: 40px 32px 64px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .btn-full {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .container {
+        max-width: 520px;
+        padding: 48px 32px 72px;
+      }
+
+      .logo {
+        width: 88px;
+        height: 88px;
+      }
+      .logo svg {
+        width: 52px;
+        height: 52px;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (hover: none) {
+      .btn:hover,
+      .service-tag:hover,
+      .brand-badge:hover,
+      .contact-details a:hover {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo" aria-label="Stärke Parts">
+        <!-- SVG logo: minimalist shield/gear shape -->
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 2L6 12v10c0 12.6 7.8 24.4 18 28 10.2-3.6 18-15.4 18-28V12L24 2zm0 6.2l12 6.9v6.9c0 9.6-5.8 18.6-12 21.2-6.2-2.6-12-11.6-12-21.2v-6.9l12-6.9z"/>
+          <path d="M20 20l4-4 4 4-2 2v6h-4v-6l-2-2z"/>
+        </svg>
+      </div>
+      <h1>E-commerce Stärke Parts</h1>
+      <p>Atendimento especializado em peças premium para veículos importados, esportivos e de alto padrão.</p>
+    </header>
+
+    <!-- CONTACT CARD -->
+    <section class="contact-card glass">
+      <div class="name">Sara de Paiva</div>
+      <div class="role">E-commerce Stärke Parts</div>
+      <div class="contact-details">
+        <a href="https://wa.me/5511999631185" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (11) 99963-1185
+        </a>
+        <a href="mailto:sara.lima@starkeparts.com">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sara.lima@starkeparts.com
+        </a>
+        <a href="https://www.mercadolivre.com.br/pagina/starkeparts2600" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          starkeparts2600
+        </a>
+      </div>
+    </section>
+
+    <!-- ACTION BUTTONS -->
+    <div class="actions">
+      <a href="https://wa.me/5511999631185" target="_blank" rel="noopener" class="btn btn-whatsapp btn-full">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chamar no WhatsApp
+      </a>
+
+      <a href="tel:+5511999631185" class="btn btn-phone">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Ligar agora
+      </a>
+
+      <a href="mailto:sara.lima@starkeparts.com" class="btn btn-email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Enviar e-mail
+      </a>
+
+      <a href="https://www.mercadolivre.com.br/pagina/starkeparts2600" target="_blank" rel="noopener" class="btn btn-ecommerce">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Acessar E-commerce
+      </a>
+
+      <button class="btn btn-contact btn-full" id="saveContactBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Salvar contato
+      </button>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about glass">
+      <h2>Sobre o E-commerce</h2>
+      <p>No E-commerce da Stärke Parts você encontra peças de alta qualidade para veículos premium e importados, com atendimento especializado, agilidade na cotação e suporte técnico para encontrar a peça certa.</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services glass">
+      <h2>Trabalhamos com</h2>
+      <div class="services-grid">
+        <div class="service-tag"><span class="dot"></span>Freios</div>
+        <div class="service-tag"><span class="dot"></span>Suspensão</div>
+        <div class="service-tag"><span class="dot"></span>Motor</div>
+        <div class="service-tag"><span class="dot"></span>Arrefecimento</div>
+        <div class="service-tag"><span class="dot"></span>Filtros</div>
+        <div class="service-tag"><span class="dot"></span>Elétrica</div>
+        <div class="service-tag"><span class="dot"></span>Ignição e Injeção</div>
+        <div class="service-tag"><span class="dot"></span>Premium/Importados</div>
+      </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section class="brands glass">
+      <h2>Marcas e linhas</h2>
+      <div class="brands-grid">
+        <span class="brand-badge">Porsche</span>
+        <span class="brand-badge">BMW</span>
+        <span class="brand-badge">Mercedes-Benz</span>
+        <span class="brand-badge">Audi</span>
+        <span class="brand-badge">Land Rover</span>
+        <span class="brand-badge">Volvo</span>
+        <span class="brand-badge">Jaguar</span>
+        <span class="brand-badge">Mini</span>
+        <span class="brand-badge">Premium</span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="tagline">Stärke Parts — Potência em Qualidade, Excelência em Cada Detalhe.</div>
+      <div class="subtagline">Oferecemos peças, entregamos confiança.</div>
+      <div class="copyright">&copy; 2026 Stärke Parts. Todos os direitos reservados.</div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('saveContactBtn').addEventListener('click', function () {
+      var nome = 'Sara de Paiva';
+      var telefone = '11999631185';
+      var email = 'sara.lima@starkeparts.com';
+      var site = 'https://www.mercadolivre.com.br/pagina/starkeparts2600';
+
+      var vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:' + nome,
+        'N:' + nome + ';;;',
+        'ORG:Stärke Parts',
+        'TITLE:E-commerce Stärke Parts',
+        'TEL;TYPE=CELL,VOICE:+55' + telefone,
+        'TEL;TYPE=WORK,VOICE:+55' + telefone,
+        'EMAIL;TYPE=WORK:' + email,
+        'URL:' + site,
+        'NOTE:E-commerce Stärke Parts - Atendimento especializado em peças premium para veículos importados, esportivos e de alto padrão.',
+        'END:VCARD'
+      ].join('\r\n');
+
+      var blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = 'starke-parts-' + telefone + '.vcf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
