@@ -374,6 +374,61 @@
       box-shadow: 0 0 20px rgba(212, 160, 23, 0.06);
     }
 
+    /* ========== BRANDS (logotipos) ========== */
+    .brands-logos {
+      margin-bottom: 24px;
+    }
+
+    .brands-logos h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .brands-logos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .brand-item {
+      min-height: 92px;
+      padding: 14px 10px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .brand-item:hover {
+      transform: translateY(-2px);
+      background: rgba(218, 165, 32, 0.08);
+      border-color: rgba(218, 165, 32, 0.35);
+    }
+
+    .brand-item img {
+      width: 92px;
+      max-width: 100%;
+      height: 36px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-item span {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.82);
+      text-align: center;
+    }
+
     /* ========== FOOTER ========== */
     .footer {
       text-align: center;
@@ -481,6 +536,12 @@
       }
     }
 
+    @media (min-width: 720px) {
+      .brands-logos-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
     @media (hover: none) {
       .btn:hover,
       .service-tag:hover,
@@ -572,7 +633,7 @@
 
     <!-- BRANDS -->
     <section class="brands glass">
-      <h2>Marcas e linhas</h2>
+      <h2>Montadoras</h2>
       <div class="brands-grid">
         <span class="brand-badge">Porsche</span>
         <span class="brand-badge">BMW</span>
@@ -583,6 +644,105 @@
         <span class="brand-badge">Jaguar</span>
         <span class="brand-badge">Mini</span>
         <span class="brand-badge">Premium</span>
+      </div>
+    </section>
+
+    <!-- BRANDS LOGOS -->
+    <section class="brands-logos glass">
+      <h2>Marcas que trabalhamos</h2>
+      <div class="brands-logos-grid">
+        <div class="brand-item">
+          <img src="./assets/brands/brembo.webp" alt="Brembo" loading="lazy">
+          <span>Brembo</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/bilstein.webp" alt="Bilstein" loading="lazy">
+          <span>Bilstein</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/bosch.webp" alt="Bosch" loading="lazy">
+          <span>Bosch</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/mahle.webp" alt="Mahle" loading="lazy">
+          <span>Mahle</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/textar.webp" alt="Textar" loading="lazy">
+          <span>Textar</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/zf.webp" alt="ZF" loading="lazy">
+          <span>ZF</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/lemforder.webp" alt="Lemförder" loading="lazy">
+          <span>Lemförder</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/trw.webp" alt="TRW" loading="lazy">
+          <span>TRW</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/sachs.webp" alt="Sachs" loading="lazy">
+          <span>Sachs</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/hengst.webp" alt="Hengst" loading="lazy">
+          <span>Hengst</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/hella.webp" alt="Hella" loading="lazy">
+          <span>Hella</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/febi-bilstein.webp" alt="febi bilstein" loading="lazy">
+          <span>febi bilstein</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/swag.webp" alt="SWAG" loading="lazy">
+          <span>SWAG</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/blue-print.webp" alt="Blue Print" loading="lazy">
+          <span>Blue Print</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/forschen.webp" alt="Forschen" loading="lazy">
+          <span>Forschen</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/geba.webp" alt="GEBA" loading="lazy">
+          <span>GEBA</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/hoffer.webp" alt="Hoffer" loading="lazy">
+          <span>Hoffer</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/pierburg.webp" alt="Pierburg" loading="lazy">
+          <span>Pierburg</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/ufi.webp" alt="UFI" loading="lazy">
+          <span>UFI</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/uro-parts.webp" alt="ÜRO Parts" loading="lazy">
+          <span>ÜRO Parts</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/hepu.webp" alt="HEPU" loading="lazy">
+          <span>HEPU</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/bga.webp" alt="BGA" loading="lazy">
+          <span>BGA</span>
+        </div>
+        <div class="brand-item">
+          <img src="./assets/brands/fremax.webp" alt="Fremax" loading="lazy">
+          <span>Fremax</span>
+        </div>
       </div>
     </section>
 
